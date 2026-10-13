@@ -2,6 +2,10 @@
 
 int main(int ac, char **av)
 {
+    t_data i;
+
+    init_data_struct(&i, ac);
+    printf("%d\n", i.);
     if (ac != 9)
     {
         printf("expected 8 arguments");

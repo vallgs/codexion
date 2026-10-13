@@ -1,17 +1,17 @@
 #include "../includes/codex.h"
 
-int ft_is_digit(char arg)
+int	ft_is_digit(char arg)
 {
-    if (arg >= 48 && arg <= 58)
-        return (1);
-    return (0);
+	if (arg >= '0' && arg <= '9')
+		return (1);
+	return (0);
 }
 
 int	ft_atoi(const char *str)
 {
 	int	i;
 	int	sign;
-	int	result;
+	long	result;
 
 	i = 0;
 	sign = 1;
@@ -42,4 +42,46 @@ int	ft_strcmp(char *s1, char *s2)
 	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
 
+int	ft_limit(const char *n)
+{
+	long a;
+	int i;
 
+	a = 0;
+	i = 0;
+	while (n[i])
+	{
+		a = a * 10 + (n[i] - '0');
+		if (a > INT_MAX)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int ft_is_valid_number(char *s)
+{
+	int j;
+
+	j = 0;
+	if (s[j] == '\0')
+	{
+		printf("empty argument\n");
+		return (0);
+	}
+	while (s[j])
+	{
+		if (ft_is_digit(s[j]) == 0)
+		{
+			printf("\"%s\" is not a number\n", s);
+			return (0);
+		}
+		j++;
+	}
+	if (ft_limit(s) == 0)
+	{
+		printf("%s is too high\n", s);
+		return (0);
+	}
+	return (1);
+}

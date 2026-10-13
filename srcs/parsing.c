@@ -3,33 +3,26 @@
 
 #include "../includes/codex.h"
 
-int parse_arg(char **arg)
+int	parse_arg(char **arg)
 {
-    int i;
-    int j;
-    
-    i = 1;
-    j = 0;
-    while (arg[i] && i <= 7)
-    {
-        j = 0;
-        while (arg[i][j])
-        {
-            if (ft_is_digit(arg[i][j]) == 0)
-                return (0);
-            j++;
-        }
-        i++;
-    }
-    return (1);
+	int	i;
+
+	i = 1;
+	while (arg[i] && i <= 7)
+	{
+		if (ft_is_valid_number(arg[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-int parse_last_arg(char **arg)
+int	parse_last_arg(char **arg)
 {
-    int i;
+	int	i;
 
-    i = 8;
-    if (ft_strcmp(arg[i], "fifo") == 0 || ft_strcmp(arg[i], "edf") == 0)
-        return (1);
-    return (0);
+	i = 8;
+	if (ft_strcmp(arg[i], "fifo") == 0 || ft_strcmp(arg[i], "edf") == 0)
+		return (1);
+	return (0);
 }
