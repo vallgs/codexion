@@ -66,21 +66,21 @@ int ft_is_valid_number(char *s)
 	j = 0;
 	if (s[j] == '\0')
 	{
-		printf("empty argument\n");
+		fprintf(stderr, "empty argument\n");
 		return (0);
 	}
 	while (s[j])
 	{
 		if (ft_is_digit(s[j]) == 0)
 		{
-			printf("\"%s\" is not a number\n", s);
+			fprintf(stderr, "\"%s\" is not a number\n", s);
 			return (0);
 		}
 		j++;
 	}
 	if (ft_limit(s) == 0)
 	{
-		printf("%s is too high\n", s);
+		fprintf(stderr, "%s is too high\n", s);
 		return (0);
 	}
 	return (1);

@@ -24,5 +24,7 @@ int	parse_last_arg(char **arg)
 	i = 8;
 	if (ft_strcmp(arg[i], "fifo") == 0 || ft_strcmp(arg[i], "edf") == 0)
 		return (1);
+	else
+		fprintf(stderr, "last arg is not fifo or edf\n");
 	return (0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   codex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/14 12:20:29 by vallangl          #+#    #+#             */
+/*   Updated: 2026/10/14 12:22:17 by vallangl         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <unistd.h>
@@ -7,21 +19,19 @@
 #include <limits.h>
 #include <stdbool.h>
 
-
-typedef	struct s_data t_data;
-typedef	struct s_coder t_coder;
-
+typedef struct s_data	t_data;
+typedef struct s_coder	t_coder;
 
 struct s_data
 {
-	int	number_of_coder;
-	int	time_to_compile;
-	int	time_to_debug;
-	int	time_to_refactor;
-	int	time_to_burnout;
-	int	number_of_compiles_required;
-	int	dongle_cooldown;
-	char *scheduler;
+	int		number_of_coder;
+	int		time_to_compile;
+	int		time_to_debug;
+	int		time_to_refactor;
+	int		time_to_burnout;
+	int		number_of_compiles_required;
+	int		dongle_cooldown;
+	char	*scheduler;
 };
 
 struct s_coder

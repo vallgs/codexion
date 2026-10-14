@@ -1,19 +1,19 @@
-SRCS := int.c main.c parsing.c util.c 
+SRCS := srcs/init.c srcs/main.c srcs/parsing.c srcs/util.c 
 
-includes := codex.h
+includes := includes/codex.h
 
 SRC_OBJS := $(SRCS:.c=.o)
 CC := cc
 CFLAGS := -Wall -Wextra -Werror -pthread
 NAME := codexion
 
-%.o: %.c
+all: ${NAME}
+
+%.o: %.c ${includes}
 	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}: ${SRC_OBJS}
-	ar rcs ${NAME} ${SRC_OBJS}
-
-all: ${NAME}
+	${CC} -o ${NAME} ${SRC_OBJS} ${CFLAGS}
 
 clean:
 	rm -f ${SRC_OBJS}
