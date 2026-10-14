@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/14 14:56:52 by vallangl          #+#    #+#             */
+/*   Updated: 2026/10/14 14:56:53 by vallangl         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+
 // av a mettre number_of_coders time_to_burnout time_to_compile time_to_debug
 //time_to_refactor number_of_compiles_required dongle_cooldown scheduler
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   util.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/14 14:57:00 by vallangl          #+#    #+#             */
+/*   Updated: 2026/10/14 14:59:33 by vallangl         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/codex.h"
 
 int	ft_is_digit(char arg)
@@ -9,8 +21,8 @@ int	ft_is_digit(char arg)
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	result;
 
 	i = 0;
@@ -44,8 +56,8 @@ int	ft_strcmp(char *s1, char *s2)
 
 int	ft_limit(const char *n)
 {
-	long a;
-	int i;
+	long	a;
+	int		i;
 
 	a = 0;
 	i = 0;
@@ -59,9 +71,9 @@ int	ft_limit(const char *n)
 	return (1);
 }
 
-int ft_is_valid_number(char *s)
+int	ft_is_valid_number(char *s)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	if (s[j] == '\0')
