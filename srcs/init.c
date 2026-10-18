@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 14:57:15 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/14 15:03:29 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/18 18:52:44 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,3 @@ int	init_data_struct(t_data *dt, char **arg)
 		return (0);
 	return (1);
 }
-
-
-
-
-
