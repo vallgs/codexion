@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 12:20:29 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/23 13:58:59 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/26 12:37:46 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <pthread.h>
 #include <limits.h>
 #include <stdbool.h>
+#include <sys/time.h>
+
 
 typedef struct s_data	t_data;
 typedef struct s_coder	t_coder;
@@ -82,6 +84,9 @@ int	ft_atoi(const char *str);
 int	ft_strcmp(char *c1, char *c2);
 int	ft_limit(const char *n);
 int	ft_is_valid_number(char *s);
+long get_time_ms(void);
+bool	is_stopped(t_data *data);
+void	print_log(t_coder *coder, char *msg);
 
 //parsing
 int	parse_arg(char **arg);
