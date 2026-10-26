@@ -1,10 +1,10 @@
-SRCS := srcs/init.c srcs/main.c srcs/parsing.c srcs/util.c 
+SRCS := srcs/init.c srcs/main.c srcs/parsing.c srcs/util.c srcs/time.c srcs/log.c
 
 includes := includes/codex.h
 
 SRC_OBJS := $(SRCS:.c=.o)
 CC := cc
-CFLAGS := -Wall -Wextra -Werror -pthread
+CFLAGS := -Wall -Wextra -Werror -pthread -Iincludes
 NAME := codexion
 
 all: ${NAME}

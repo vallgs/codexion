@@ -6,11 +6,13 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 12:20:29 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/18 18:54:18 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/23 13:58:59 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CODEX_H
+
+# define CODEX_H
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -21,6 +23,21 @@
 
 typedef struct s_data	t_data;
 typedef struct s_coder	t_coder;
+typedef struct s_dongle t_dongle;
+
+typedef enum e_state
+{
+	COMPILING,
+	DEBUGGING,
+	REFACTORING,
+	BURNOUT
+}	t_state;
+
+typedef enum e_sched
+{
+	FIFO,
+	EDF
+}	t_sched;
 
 struct s_data
 {
@@ -31,27 +48,33 @@ struct s_data
 	int		time_to_burnout;
 	int		number_of_compiles_required;
 	int		dongle_cooldown;
-	char	*scheduler;
+	t_sched	scheduler;
+	long start_time;
+	bool stop;
+	pthread_mutex_t stop_mutex;
+	t_coder *coders;
+	t_dongle *dongles;
+	pthread_t monitor;
+	pthread_mutex_t print_mutex;
 };
 
 struct s_coder
 {
 	pthread_t	thread;
 	int			id;
-	pthread_mutex_t		*dongle_tab;
-	pthread_mutex_t		message;
-	pthread_mutex_t		burnout_mutex;
-	int					burnout;
-	pthread_mutex_t		monitor;
+	t_dongle *left;
+	t_dongle *right;
+	long last_compile_start;
+	int compile_count;
+	pthread_mutex_t state_mutex;
+	t_data *data;
 };
 
-typedef enum e_state
+struct s_dongle
 {
-	COMPILING,
-	DEBUGGING,
-	REFACTORING,
-	BURNOUT
-}	t_state;
+	pthread_mutex_t mutex;
+	long available_at;
+};
 
 //utils
 int	ft_is_digit(char arg);
@@ -66,3 +89,6 @@ int	parse_last_arg(char **arg);
 
 //init
 int	init_data_struct(t_data *dt, char **arg);
+
+
+#endif
