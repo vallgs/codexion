@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 12:20:29 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/26 12:37:46 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/27 13:12:27 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,25 @@ long get_time_ms(void);
 bool	is_stopped(t_data *data);
 void	print_log(t_coder *coder, char *msg);
 
+//time
+void	ft_sleep(t_data *data, long ms);
+
 //parsing
 int	parse_arg(char **arg);
 int	parse_last_arg(char **arg);
 
 //init
 int	init_data_struct(t_data *dt, char **arg);
+int init_alloc(t_data *data);
+int	init_dongles(t_data *data);
+int init_coders(t_data *data);
+int init_simulation(t_data *data);
 
+//clean
+void cleanup(t_data *data);
+
+//coder
+void	take_dongles(t_coder *coder);
+void	release_dongles(t_coder *coder);
 
 #endif
