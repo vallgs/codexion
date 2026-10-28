@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 13:03:52 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/27 13:13:22 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/28 13:35:10 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	take_dongles(t_coder *coder)
 {
-	t_dongle *first;
-	t_dongle *second;
+	t_dongle	*first;
+	t_dongle	*second;
 
 	if (coder->left < coder->right)
 	{
@@ -42,13 +42,29 @@ void	release_dongles(t_coder *coder)
 void	do_compile(t_coder *coder)
 {
 	take_dongles(coder);
-	pthread_mutex_lock(&coder->???);
-	coder->last_compile_start = ???;
-	pthread_mutex_unlock(&coder->???);
+	pthread_mutex_lock(&coder->state_mutex);
+	coder->last_compile_start = get_time_ms();
+	pthread_mutex_unlock(&coder->state_mutex);
 	print_log(coder, "is compiling");
-	ft_sleep(coder->data, coder->data->???);
-	pthread_mutex_lock(&coder->???);
+	ft_sleep(coder->data, coder->data->time_to_compile);
+	pthread_mutex_lock(&coder->state_mutex);
 	coder->compile_count++;
-	pthread_mutex_unlock(&coder->???);
+	pthread_mutex_unlock(&coder->state_mutex);
 	release_dongles(coder);
+}
+
+void	*coder_routine(void *arg)
+{
+	t_coder	*coder;
+
+	coder = arg;
+	while (!is_stopped(coder->data))
+	{
+		do_compile(coder);
+		print_log(coder, "is debugging");
+		ft_sleep(coder->data, coder->data->time_to_debug);
+		print_log(coder, "is refactoring");
+		ft_sleep(coder->data, coder->data->time_to_refactor);
+	}
+	return (NULL);
 }

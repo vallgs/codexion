@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 12:20:29 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/27 13:12:27 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/28 13:34:19 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int init_alloc(t_data *data);
 int	init_dongles(t_data *data);
 int init_coders(t_data *data);
 int init_simulation(t_data *data);
+int	start_simulation(t_data *data);
+void	init_start_times(t_data *data);
 
 //clean
 void cleanup(t_data *data);
@@ -108,5 +110,14 @@ void cleanup(t_data *data);
 //coder
 void	take_dongles(t_coder *coder);
 void	release_dongles(t_coder *coder);
+void	do_compile(t_coder *coder);
+void *coder_routine(void *arg);
+
+//thread
+void	set_stop(t_data *data);
+bool	check_burnout(t_data *data);
+bool	check_all_done(t_data *data);
+void	*monitor_routine(void *arg);
+
 
 #endif

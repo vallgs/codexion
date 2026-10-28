@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 12:17:17 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/27 12:38:06 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/28 13:06:05 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int ac, char **av)
 		fprintf(stderr, "init failed\n");
 		return (1);
 	}
+	start_simulation(&i);
 	cleanup(&i);
 	return (0);
 }
