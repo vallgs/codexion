@@ -6,15 +6,15 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 12:21:42 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/27 12:30:00 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/29 14:54:41 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "codex.h"
 
-void cleanup(t_data *data)
+void	cleanup(t_data *data)
 {
-	int k;
+	int	k;
 
 	k = 0;
 	while (k < data->number_of_coder)

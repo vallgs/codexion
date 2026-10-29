@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 13:03:52 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/29 12:56:57 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/29 14:56:19 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*coder_routine(void *arg)
 	return (NULL);
 }
 
-void *single_coder(t_coder *coder)
+void	*single_coder(t_coder *coder)
 {
 	pthread_mutex_lock(&coder->left->mutex);
 	print_log(coder, "has taken a dongle");
