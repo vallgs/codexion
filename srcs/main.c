@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_data	i;
+	int		ok;
 
 	if (ac != 9)
 	{
@@ -33,7 +34,7 @@ int	main(int ac, char **av)
 		fprintf(stderr, "init failed\n");
 		return (1);
 	}
-	start_simulation(&i);
+	ok = start_simulation(&i);
 	cleanup(&i);
-	return (0);
+	return (ok == 0);
 }

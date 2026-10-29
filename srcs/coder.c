@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 13:03:52 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/29 12:42:01 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/29 12:56:57 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	do_compile(t_coder *coder)
 {
-	take_dongles(coder);
+	if (!take_dongles(coder))
+		return ;
 	pthread_mutex_lock(&coder->state_mutex);
 	coder->last_compile_start = get_time_ms();
 	pthread_mutex_unlock(&coder->state_mutex);
@@ -23,6 +24,7 @@ void	do_compile(t_coder *coder)
 	pthread_mutex_lock(&coder->state_mutex);
 	coder->compile_count++;
 	pthread_mutex_unlock(&coder->state_mutex);
+	print_log(coder, "is debugging");
 	release_dongles(coder);
 }
 
@@ -38,7 +40,6 @@ void	*coder_routine(void *arg)
 	while (!is_stopped(coder->data))
 	{
 		do_compile(coder);
-		print_log(coder, "is debugging");
 		ft_sleep(coder->data, coder->data->time_to_debug);
 		print_log(coder, "is refactoring");
 		ft_sleep(coder->data, coder->data->time_to_refactor);

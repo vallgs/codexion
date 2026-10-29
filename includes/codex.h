@@ -115,6 +115,8 @@ int init_coders(t_data *data);
 int init_simulation(t_data *data);
 int	start_simulation(t_data *data);
 void	init_start_times(t_data *data);
+void	join_coders(t_data *data, int count);
+int	abort_simulation(t_data *data, int count);
 
 //clean
 void cleanup(t_data *data);
