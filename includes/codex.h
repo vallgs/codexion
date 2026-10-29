@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 12:20:29 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/29 11:51:02 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/29 12:32:05 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	init_start_times(t_data *data);
 void cleanup(t_data *data);
 
 //coder
-void	take_dongles(t_coder *coder);
+bool	take_dongles(t_coder *coder);
 void	release_dongles(t_coder *coder);
 void	do_compile(t_coder *coder);
 void *coder_routine(void *arg);
@@ -132,5 +132,16 @@ bool	check_burnout(t_data *data);
 bool	check_all_done(t_data *data);
 void	*monitor_routine(void *arg);
 
+//heap
+bool request_before(t_request *a, t_request *b);
+void swap_request(t_request *a, t_request *b);
+void heap_push(t_dongle *d, t_request request);
+void heap_pop(t_dongle *d);
+bool	is_my_turn(t_coder *coder, t_dongle *d);
+
+//dongle
+void order_dongles(t_coder *coder, t_dongle **first, t_dongle **second);
+void	request_dongles(t_coder *coder);
+bool	try_take(t_coder *coder);
 
 #endif
