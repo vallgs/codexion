@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 13:03:52 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/28 13:35:10 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/29 11:42:36 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	*coder_routine(void *arg)
 	t_coder	*coder;
 
 	coder = arg;
+	if (coder->left == coder->right)
+		return (single_coder(coder));
 	while (!is_stopped(coder->data))
 	{
 		do_compile(coder);
@@ -66,5 +68,14 @@ void	*coder_routine(void *arg)
 		print_log(coder, "is refactoring");
 		ft_sleep(coder->data, coder->data->time_to_refactor);
 	}
+	return (NULL);
+}
+
+void *single_coder(t_coder *coder)
+{
+	pthread_mutex_lock(&coder->left->mutex);
+	print_log(coder, "has taken a dongle");
+	ft_sleep(coder->data, coder->data->time_to_burnout + 100);
+	pthread_mutex_unlock(&coder->left->mutex);
 	return (NULL);
 }

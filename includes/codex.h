@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 12:20:29 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/28 13:34:19 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/29 11:51:02 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef struct s_data	t_data;
 typedef struct s_coder	t_coder;
 typedef struct s_dongle t_dongle;
+typedef struct s_request t_request;
 
 typedef enum e_state
 {
@@ -72,10 +73,21 @@ struct s_coder
 	t_data *data;
 };
 
+struct s_request
+{
+	t_coder *coder;
+	long	key;
+	long	ticket;
+};
+
 struct s_dongle
 {
 	pthread_mutex_t mutex;
 	long available_at;
+	bool	taken;
+	long	next_ticket;
+	t_request queue[2];
+	int size;
 };
 
 //utils
@@ -112,6 +124,7 @@ void	take_dongles(t_coder *coder);
 void	release_dongles(t_coder *coder);
 void	do_compile(t_coder *coder);
 void *coder_routine(void *arg);
+void *single_coder(t_coder *coder);
 
 //thread
 void	set_stop(t_data *data);

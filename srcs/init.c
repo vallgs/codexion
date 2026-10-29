@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 14:57:15 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/27 12:20:47 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/29 11:52:37 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ int	init_dongles(t_data *data)
 	{
 		pthread_mutex_init(&data->dongles[k].mutex, NULL);
 		data->dongles[k].available_at = 0;
+		data->dongles[k].taken = false;
+		data->dongles[k].next_ticket = 0;
+		data->dongles[k].size = 0;
 		k++;
 	}
 	return (1);
