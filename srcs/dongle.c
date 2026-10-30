@@ -6,13 +6,13 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 12:11:45 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/29 12:31:27 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/30 12:20:16 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "codex.h"
 
-void order_dongles(t_coder *coder, t_dongle **first, t_dongle **second)
+void	order_dongles(t_coder *coder, t_dongle **first, t_dongle **second)
 {
 	*first = coder->left;
 	*second = coder->right;
@@ -58,7 +58,6 @@ bool	take_dongles(t_coder *coder)
 	return (true);
 }
 
-
 void	release_dongles(t_coder *coder)
 {
 	long	now;
@@ -73,7 +72,6 @@ void	release_dongles(t_coder *coder)
 	coder->right->available_at = now + coder->data->dongle_cooldown;
 	pthread_mutex_unlock(&coder->right->mutex);
 }
-
 
 bool	try_take(t_coder *coder)
 {
@@ -96,4 +94,3 @@ bool	try_take(t_coder *coder)
 	pthread_mutex_unlock(&first->mutex);
 	return (ok);
 }
-

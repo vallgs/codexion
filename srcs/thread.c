@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 12:56:20 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/28 13:36:50 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/30 12:17:17 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,3 @@ int	start_simulation(t_data *data)
 	pthread_join(data->monitor, NULL);
 	return (1);
 }
-
-

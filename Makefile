@@ -17,12 +17,23 @@ ${NAME}: ${SRC_OBJS}
 
 clean:
 	rm -f ${SRC_OBJS}
-	rm -f srcs/a.out
 
 fclean: clean
 	rm -f ${NAME}
-	rm -f srcs/a.out
 
 re: fclean all
 
-.PHONY: re fclean clean all
+ARGS ?= 5 800 200 200 200 3 0 edf
+
+norm:
+	norminette srcs includes
+
+valgrind: ${NAME}
+	valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./${NAME} ${ARGS}
+
+helgrind: ${NAME}
+	valgrind --tool=helgrind --error-exitcode=1 ./${NAME} ${ARGS}
+
+lint: norm valgrind helgrind
+
+.PHONY: re fclean clean all norm valgrind helgrind lint

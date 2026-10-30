@@ -6,7 +6,7 @@
 /*   By: vallangl <vallangl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 13:12:11 by vallangl          #+#    #+#             */
-/*   Updated: 2026/10/28 13:23:09 by vallangl         ###   ########.fr       */
+/*   Updated: 2026/10/30 12:18:00 by vallangl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool	check_burnout(t_data *data)
 bool	check_all_done(t_data *data)
 {
 	int		k;
-	int	count;
+	int		count;
 
 	k = 0;
 	while (k < data->number_of_coder)
@@ -63,7 +63,7 @@ bool	check_all_done(t_data *data)
 	return (true);
 }
 
-void *monitor_routine(void *arg)
+void	*monitor_routine(void *arg)
 {
 	t_data	*data;
 
